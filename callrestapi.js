@@ -47,7 +47,9 @@ function getUsers() {
                                 '<td>' + item.email + '</td>' +
                                 '<td>' + item.age + '</td>' +
                                 '<td>' + item.comments + '</td>' +
-                              '</tr>';
+                                '<td>' + item.comments + '</td>' +
+    '<td><button onclick="deleteUser(' + item.id + ')">Eliminar</button></td>' +
+                                '</tr>';
         });
 
         htmlTableUsers += '</table>';
@@ -56,3 +58,25 @@ function getUsers() {
       }
     );
 }
+
+function deleteUser(id) {
+    if (confirm("¿Estás segura de que quieres eliminar al usuario con id " + id + "?")) {
+        $.ajax({
+            url: url + "/" + id,
+            type: 'DELETE',
+            success: function (data) {
+                console.log(data);
+                alert("Usuario eliminado: " + id);
+                getUsers(); // actualiza la lista después de eliminar
+            },
+            error: function (err) {
+                console.error(err);
+                alert("Error al eliminar el usuario.");
+            }
+        });
+    }
+}
+
+
+
+
