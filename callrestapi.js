@@ -1,5 +1,5 @@
-var url= "http://localhost:8080/api/users";
-//var url= "https://.onrender.com/api/users";
+//var url= "http://localhost:8080/api/users";
+var url= "https://pg-restapi-fw0f.onrender.com/api/users";
 function postUser(){
     var myName = $('#name').val();
     var myEmail = $('#email').val();
